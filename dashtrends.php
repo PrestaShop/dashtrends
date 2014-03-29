@@ -41,7 +41,7 @@ class Dashtrends extends Module
 		$this->displayName = 'Dashboard Trends';
 		$this->description = 'Dashboard Trends';
 		$this->tab = 'dashboard';
-		$this->version = '0.3';
+		$this->version = '0.4';
 		$this->author = 'PrestaShop';
 
 		$this->push_filename = _PS_CACHE_DIR_.'push/trends';
@@ -281,16 +281,18 @@ class Dashtrends extends Module
 			$calibration = array_sum($this->dashboard_data[$chart_key]) / $count;
 
 			foreach ($this->dashboard_data[$chart_key] as $key => $value)
+				$chart_data[$chart_key][] = array($key, $value);
 				// min(10) is there to limit the growth to 1000%, beyond this limit it becomes unreadable
-				$chart_data[$chart_key][] = array(1000 * $key, $calibration ? min(10, $value / $calibration) : 0);
+				//$chart_data[$chart_key][] = array(1000 * $key, $calibration ? min(10, $value / $calibration) : 0);
 
 			if ($this->dashboard_data_compare)
-				foreach ($this->dashboard_data_compare[$chart_key] as $key => $value)
+				foreach ($this->dashboard_data_compare[$chart_key] as $key => $value)					
+					$chart_data_compare[$chart_key][] = array($key, $value);
 					// min(10) is there to limit the growth to 1000%, beyond this limit it becomes unreadable
-					$chart_data_compare[$chart_key][] = array(
+					/*$chart_data_compare[$chart_key][] = array(
 						1000 * $key,
 						$calibration ? min(10, $value / $calibration) : 0
-					);
+					);*/
 		}
 
 		$charts = array(
