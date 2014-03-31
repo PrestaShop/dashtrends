@@ -17,7 +17,8 @@ function line_chart_trends(widget_name, chart_details)
 		$.each(chart_details.data, function(index, value) {
 			if (value.id == 'sales' || value.id == 'sales_compare')
 			{
-				$('#dashtrends_toolbar dl:first').css('background-color', chart_details.data[index].color).css('color', '#fff');
+				if (value.id == 'sales')
+					$('#dashtrends_toolbar dl:first').css('background-color', chart_details.data[index].color).css('color', '#fff');
 				first_data.push(chart_details.data[index]); 
 			}
 		});
