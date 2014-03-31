@@ -36,7 +36,7 @@
 		</span>
 	</header>
 	<div id="dashtrends_toolbar" class="row">
-		<dl class="col-xs-4 col-lg-2 active" onclick="selectDashtrendsChart(this, 'sales');">
+		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'sales');">
 			<dt>{l s='Sales' mod='dashtrends'}</dt>
 			<dd class="data_value size_l"><span id="sales_score"></span></dd>
 			<dd class="dash_trend"><span id="sales_score_trends"></span></dd>
