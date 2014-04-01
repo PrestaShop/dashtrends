@@ -10,7 +10,7 @@ function line_chart_trends(widget_name, chart_details)
 			.y(function(d) { return (d !== undefined ? d[1] : 0); });
 	
 		chart.xAxis.tickFormat(function(d) {
-			return d3.time.format('%m/%d/%y')(new Date(d))
+			return d3.time.format('%m/%d/%y')(new Date(d*1000))
 		});
 
 		first_data = new Array();
