@@ -308,7 +308,7 @@ class Dashtrends extends Module
 		$gfx_color_compare = array('#A5CEE4','#B1E086','#FD9997','#FFC068','#CAB1D7','#D2A689');
 
 		$i = 0;
-		$data = array('chart_type' => 'line_chart_trends', 'data' => array());
+		$data = array('chart_type' => 'line_chart_trends', 'date_format' => $this->context->language->date_format_lite, 'data' => array());
 		foreach ($charts as $key => $title)
 		{
 			$data['data'][] = array(
