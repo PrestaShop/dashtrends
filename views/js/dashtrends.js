@@ -73,3 +73,7 @@ function selectDashtrendsChart(element, type)
 		.datum(current_charts)
 		.call(dashtrends_chart);
 }
+
+$(document).ready(function(){
+    $("dl").tooltip();
+});

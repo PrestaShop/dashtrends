@@ -36,46 +36,35 @@
 		</span>
 	</header>
 	<div id="dashtrends_toolbar" class="row">
-		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'sales');">
-			<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Sum of revenue (excl. tax) generated within the date range by orders considered validated.' mod='dashtrends'}" data-placement="bottom">
+		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'sales');" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Sum of revenue (excl. tax) generated within the date range by orders considered validated.' mod='dashtrends'}" data-placement="bottom">
 				<dt>{l s='Sales' mod='dashtrends'}</dt>
 				<dd class="data_value size_l"><span id="sales_score"></span></dd>
 				<dd class="dash_trend"><span id="sales_score_trends"></span></dd>
-			</span>
 		</dl>
-		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'orders');">
-			<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Total number of orders taken within the date range that are considered validated.' mod='dashtrends'}" data-placement="bottom">
+		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'orders');" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Total number of orders taken within the date range that are considered validated.' mod='dashtrends'}" data-placement="bottom">
 				<dt>{l s='Orders' mod='dashtrends'}</dt>
 				<dd class="data_value size_l"><span id="orders_score"></span></dd>
 				<dd class="dash_trend"><span id="orders_score_trends"></span></dd>
-			</span>
 		</dl>
-		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'average_cart_value');">
-			<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Average Cart Value is a metric representing the value of an average order within the date range. It is calculated by dividing Sales by Orders.' mod='dashtrends'}" data-placement="bottom">
+		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'average_cart_value');" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Average Cart Value is a metric representing the value of an average order within the date range. It is calculated by dividing Sales by Orders.' mod='dashtrends'}" data-placement="bottom">
 				<dt>{l s='Cart Value' mod='dashtrends'}</dt>
 				<dd class="data_value size_l"><span id="cart_value_score"></span></dd>
 				<dd class="dash_trend"><span id="cart_value_score_trends"></span></dd>
-			</span>
 		</dl>
-		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'visits');">
-			<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Total number of visits within the date range. A visit is the period of time a user is actively engaged with your website.' mod='dashtrends'}" data-placement="bottom">
+		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'visits');" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Total number of visits within the date range. A visit is the period of time a user is actively engaged with your website.' mod='dashtrends'}" data-placement="bottom">
 				<dt>{l s='Visits' mod='dashtrends'}</dt>
 				<dd class="data_value size_l"><span id="visits_score"></span></dd>
 				<dd class="dash_trend"><span id="visits_score_trends"></span></dd>
-			</span>
 		</dl>
-		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'conversion_rate');">
-			<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Ecommerce Conversion Rate is the percentage of visits that resulted in an validated order.' mod='dashtrends'}" data-placement="bottom">
+		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'conversion_rate');" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Ecommerce Conversion Rate is the percentage of visits that resulted in an validated order.' mod='dashtrends'}" data-placement="bottom">
 			<dt>{l s='Conversion Rate' mod='dashtrends'}</dt>
 			<dd class="data_value size_l"><span id="conversion_rate_score"></span></dd>
 			<dd class="dash_trend"><span id="conversion_rate_score_trends"></span></dd>
 		</dl>
-		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'net_profits');">
-			<span title="" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Net profit is a measure of the profitability of a venture after accounting for all Ecommerce costs. You can provide these costs by clicking on the configuration icon right above here.' mod='dashtrends'}" data-placement="bottom">
+		<dl class="col-xs-4 col-lg-2" onclick="selectDashtrendsChart(this, 'net_profits');" data-toggle="tooltip" class="label-tooltip" data-original-title="{l s='Net profit is a measure of the profitability of a venture after accounting for all Ecommerce costs. You can provide these costs by clicking on the configuration icon right above here.' mod='dashtrends'}" data-placement="bottom">
 				<dt>{l s='Net Profit' mod='dashtrends'}</dt>
 				<dd class="data_value size_l"><span id="net_profits_score"></span></dd>
 				<dd class="dash_trend"><span id="net_profits_score_trends"></span></dd>
-			</span>
 		</dl>
 	</div>
 
