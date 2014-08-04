@@ -38,8 +38,6 @@ class Dashtrends extends Module
 	public function __construct()
 	{
 		$this->name = 'dashtrends';
-		$this->displayName = 'Dashboard Trends';
-		$this->description = 'Dashboard Trends';
 		$this->tab = 'dashboard';
 		$this->version = '0.6';
 		$this->author = 'PrestaShop';
@@ -48,6 +46,7 @@ class Dashtrends extends Module
 		$this->allow_push = true;
 
 		parent::__construct();
+		$this->displayName = $this->l('Dashboard Trends');
 		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
 	}
 
