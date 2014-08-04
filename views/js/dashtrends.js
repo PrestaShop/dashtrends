@@ -3,6 +3,10 @@ var dashtrends_chart;
 
 function line_chart_trends(widget_name, chart_details)
 {
+	if (chart_details.data[0].values.length <= 1)
+		$('#dash_trends_chart1').hide();
+	else
+		$('#dash_trends_chart1').show();
 	nv.addGraph(function() {  
 		var chart = nv.models.lineChart()
 			.useInteractiveGuideline(true)
