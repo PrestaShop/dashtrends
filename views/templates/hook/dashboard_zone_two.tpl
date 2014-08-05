@@ -67,7 +67,7 @@
 				<dd class="dash_trend"><span id="net_profits_score_trends"></span></dd>
 		</dl>
 	</div>
-	<div id="dash_trends_chart1" class='chart with-transitions'>
+	<div id="dash_trends_chart1" class="chart with-transitions">
 		<svg></svg>
 	</div>
 </section>

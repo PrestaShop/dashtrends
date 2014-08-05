@@ -121,8 +121,6 @@ class Dashtrends extends Module
 		);
 
 		$from = strtotime($date_from.' 00:00:00');
-		if (!Configuration::get('PS_DASHBOARD_SIMULATION'))
-			$from = max(strtotime(_PS_CREATION_DATE_.' 00:00:00'), $from);
 		$to = min(time(), strtotime($date_to.' 23:59:59'));
 		for ($date = $from; $date <= $to; $date = strtotime('+1 day', $date))
 		{
@@ -146,7 +144,6 @@ class Dashtrends extends Module
 			if (isset($gross_data['total_expenses'][$date]))
 				$refined_data['net_profits'][$date] -= $gross_data['total_expenses'][$date];
 		}
-
 		return $refined_data;
 	}
 
