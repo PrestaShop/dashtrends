@@ -41,7 +41,7 @@
 				<dd class="data_value size_l"><span id="sales_score"></span></dd>
 				<dd class="dash_trend"><span id="sales_score_trends"></span></dd>
 		</dl>
-		<dl class="col-xs-4 col-lg-2 label-tooltip" onclick="selectDashtrendsChart(this, 'orders');" data-toggle="tooltip" data-original-title="{l s='Total number of orders taken within the date range that are considered validated.' mod='dashtrends'}" data-placement="bottom">
+		<dl class="col-xs-4 col-lg-2 label-tooltip" onclick="selectDashtrendsChart(this, 'orders');" data-toggle="tooltip" data-original-title="{l s='Total number of orders received within the date range that are considered validated.' mod='dashtrends'}" data-placement="bottom">
 				<dt>{l s='Orders' mod='dashtrends'}</dt>
 				<dd class="data_value size_l"><span id="orders_score"></span></dd>
 				<dd class="dash_trend"><span id="orders_score_trends"></span></dd>
