@@ -38,7 +38,7 @@ function line_chart_trends(widget_name, chart_details)
 		d3.select('#dash_trends_chart1 svg')
 			.datum(first_data)
 			.call(chart);
-		nv.utils.windowResize(function() {chart.update});
+		nv.utils.windowResize(chart.update);
 
 		return chart;
 	});
@@ -77,8 +77,6 @@ function selectDashtrendsChart(element, type)
 	d3.select('#dash_trends_chart1 svg')
 		.datum(current_charts)
 		.call(dashtrends_chart);
-
-	nv.utils.windowResize(function() {dashtrends_chart.update});
 }
 
 $(document).ready(function(){
