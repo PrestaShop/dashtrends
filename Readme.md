@@ -1,4 +1,4 @@
-# Dashboard
+# Dashboard Trends
 
 ## About
 
