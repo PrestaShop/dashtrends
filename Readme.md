@@ -1,8 +1,8 @@
-# 
+# Dashboard Trends
 
 ## About
 
-
+Adds a block whith the evolution of your stores main numbers along with a graphic.
 
 ## Contributing
 
