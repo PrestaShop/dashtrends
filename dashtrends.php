@@ -99,11 +99,11 @@ class Dashtrends extends Module
 		}
 		else
 		{
-			$tmp_data['visits'] = AdminStatsControllerCore::getVisits(false, $date_from, $date_to, 'day');
-			$tmp_data['orders'] = AdminStatsControllerCore::getOrders($date_from, $date_to, 'day');
-			$tmp_data['total_paid_tax_excl'] = AdminStatsControllerCore::getTotalSales($date_from, $date_to, 'day');
-			$tmp_data['total_purchases'] = AdminStatsControllerCore::getPurchases($date_from, $date_to, 'day');
-			$tmp_data['total_expenses'] = AdminStatsControllerCore::getExpenses($date_from, $date_to, 'day');
+			$tmp_data['visits'] = AdminStatsController::getVisits(false, $date_from, $date_to, 'day');
+			$tmp_data['orders'] = AdminStatsController::getOrders($date_from, $date_to, 'day');
+			$tmp_data['total_paid_tax_excl'] = AdminStatsController::getTotalSales($date_from, $date_to, 'day');
+			$tmp_data['total_purchases'] = AdminStatsController::getPurchases($date_from, $date_to, 'day');
+			$tmp_data['total_expenses'] = AdminStatsController::getExpenses($date_from, $date_to, 'day');
 		}
 
 		return $tmp_data;
