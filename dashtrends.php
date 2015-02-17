@@ -47,7 +47,7 @@ class Dashtrends extends Module
 
 		parent::__construct();
 		$this->displayName = $this->l('Dashboard Trends');
-		$this->description = $this->l('Adds a block whith the evolution of your stores main numbers along with a graphic.');
+		$this->description = $this->l('Adds a block with a graphical representation of the development of your store(s) based on selected key data.');
 		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
 	}
 
