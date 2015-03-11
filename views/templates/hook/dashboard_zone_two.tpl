@@ -22,6 +22,12 @@
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
+<script>
+	var currency_format = {$currency->format|intval};
+	var currency_sign = '{$currency->sign|@addcslashes:'\''}';
+	var currency_blank = {$currency->blank|intval};
+	var priceDisplayPrecision = 0;
+</script>
 <div class="clearfix"></div>
 <section id="dashtrends" class="panel widget{if $allow_push} allow_push{/if}">
 	<header class="panel-heading">
