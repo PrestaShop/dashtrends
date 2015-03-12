@@ -69,6 +69,9 @@ class Dashtrends extends Module
 
 	public function hookDashboardZoneTwo($params)
 	{
+		$this->context->smarty->assign(array(
+			'currency' => $this->context->currency
+		));
 		return $this->display(__FILE__, 'dashboard_zone_two.tpl');
 	}
 
@@ -283,7 +286,7 @@ class Dashtrends extends Module
 				//$chart_data[$chart_key][] = array(1000 * $key, $calibration ? min(10, $value / $calibration) : 0);
 
 			if ($this->dashboard_data_compare)
-				foreach ($this->dashboard_data_compare[$chart_key] as $key => $value)					
+				foreach ($this->dashboard_data_compare[$chart_key] as $key => $value)
 					$chart_data_compare[$chart_key][] = array($key, $value);
 					// min(10) is there to limit the growth to 1000%, beyond this limit it becomes unreadable
 					/*$chart_data_compare[$chart_key][] = array(
