@@ -39,7 +39,7 @@ class Dashtrends extends Module
 	{
 		$this->name = 'dashtrends';
 		$this->tab = 'dashboard';
-		$this->version = '0.7.3';
+		$this->version = '0.7.4';
 		$this->author = 'PrestaShop';
 
 		$this->push_filename = _PS_CACHE_DIR_.'push/trends';
