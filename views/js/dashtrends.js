@@ -11,7 +11,8 @@ function line_chart_trends(widget_name, chart_details)
 		var chart = nv.models.lineChart()
 			.useInteractiveGuideline(true)
 			.x(function(d) { return (d !== undefined ? d[0] : 0); })
-			.y(function(d) { return (d !== undefined ? parseInt(d[1]) : 0); });
+			.y(function(d) { return (d !== undefined ? parseInt(d[1]) : 0); })
+			.margin({left: 80});
 
 		chart.xAxis.tickFormat(function(d) {
 			date = new Date(d*1000);
