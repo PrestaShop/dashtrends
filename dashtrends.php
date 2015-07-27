@@ -226,12 +226,12 @@ class Dashtrends extends Module
 
 		return array(
 			'data_value' => array(
-				'sales_score' => Tools::displayPrice(round($this->dashboard_data_sum['sales']), $currency),
+				'sales_score' => Tools::displayPrice(round($this->dashboard_data_sum['sales']), $currency).' <small>'.$this->l('tax excl.').'</small>',
 				'orders_score' => Tools::displayNumber($this->dashboard_data_sum['orders'], $currency),
-				'cart_value_score' => Tools::displayPrice($this->dashboard_data_sum['average_cart_value'], $currency),
+				'cart_value_score' => Tools::displayPrice($this->dashboard_data_sum['average_cart_value'], $currency).' <small>'.$this->l('tax excl.').'</small>',
 				'visits_score' => Tools::displayNumber($this->dashboard_data_sum['visits'], $currency),
 				'conversion_rate_score' => round(100 * $this->dashboard_data_sum['conversion_rate'], 2).'%',
-				'net_profits_score' => Tools::displayPrice(round($this->dashboard_data_sum['net_profits']), $currency),
+				'net_profits_score' => Tools::displayPrice(round($this->dashboard_data_sum['net_profits']), $currency).' <small>'.$this->l('tax excl.').'</small>',
 			),
 			'data_trends' => $this->data_trends,
 			'data_chart' => array('dash_trends_chart1' => $this->getChartTrends()),
