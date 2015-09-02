@@ -205,9 +205,7 @@ class Dashtrends extends Module
 
 	public function hookDashboardData($params)
 	{
-		// Artificially remove the decimals in order to get a cleaner Dashboard
 		$this->currency = clone $this->context->currency;
-        $this->currency->decimals = 0;
 
 		// Retrieve, refine and add up data for the selected period
 		$tmp_data = $this->getData($params['date_from'], $params['date_to']);
@@ -225,13 +223,13 @@ class Dashtrends extends Module
 			$this->dashboard_data_compare = $this->translateCompareData($this->dashboard_data, $this->dashboard_data_compare);
 		}
 
-        $sales_score = $this->formatPricePrecision($this->dashboard_data_sum['sales']).
+        $sales_score = Tools::displayPrice($this->dashboard_data_sum['sales'], $this->currency).
                        $this->addTaxSuffix();
 
-        $cart_value_score = $this->formatPricePrecision($this->dashboard_data_sum['average_cart_value']).
+        $cart_value_score = Tools::displayPrice($this->dashboard_data_sum['average_cart_value'], $this->currency).
                             $this->addTaxSuffix();
 
-        $net_profit_score = $this->formatPricePrecision($this->dashboard_data_sum['net_profits']).
+        $net_profit_score = Tools::displayPrice($this->dashboard_data_sum['net_profits'], $this->currency).
                             $this->addTaxSuffix();
 
 		return array(
@@ -251,32 +249,6 @@ class Dashtrends extends Module
     protected function addTaxSuffix()
     {
         return ' <small>'.$this->l('tax excl.').'</small>';
-    }
-
-    protected function formatPricePrecision($data)
-    {
-        $to_format = Tools::displayPrice($data, $this->currency);
-        $exploded_string = explode(' ', $to_format);
-        if (!is_array($exploded_string)) {
-            return $to_format;
-        }
-
-        $is_sign_on_left = false;
-
-        if ((float)$exploded_string[0] == $exploded_string[0]) {
-            $price = $exploded_string[0];
-            $currency_sign = $exploded_string[1];
-        } else {
-            $is_sign_on_left = true;
-            $price = $exploded_string[1];
-            $currency_sign = $exploded_string[0];
-        }
-
-        if ($is_sign_on_left) {
-            return $currency_sign.' '.number_format((float)$price, (int)_PS_PRICE_DISPLAY_PRECISION_);
-        } else {
-            return number_format((float)$price, (int)_PS_PRICE_DISPLAY_PRECISION_).' '.$currency_sign;
-        }
     }
 
 	protected function translateCompareData($normal, $compare)
