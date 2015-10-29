@@ -129,6 +129,9 @@ class Dashtrends extends Module
 		$to = min(time(), strtotime($date_to.' 23:59:59'));
 		for ($date = $from; $date <= $to; $date = strtotime('+1 day', $date))
 		{
+			if (date('G', $date) == '1')
+				$date = strtotime(date('Y-m-d H:i:s', $date) . ' -1 hour');
+				
 			$refined_data['sales'][$date] = 0;
 			if (isset($gross_data['total_paid_tax_excl'][$date]))
 				$refined_data['sales'][$date] += $gross_data['total_paid_tax_excl'][$date];
