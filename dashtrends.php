@@ -276,7 +276,6 @@ class Dashtrends extends Module
 				} else {
 					$translation = 1;
 				}
-				}
 				$translated_array[$key][number_format($translation, 0, '', '')] = $value;
 			}
 		}
