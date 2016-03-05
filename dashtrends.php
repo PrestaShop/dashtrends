@@ -271,7 +271,12 @@ class Dashtrends extends Module
 			$translated_array[$key] = array();
 			foreach ($date_array as $compare_date => $value)
 			{
-				$translation = $normal_min + ($compare_date - $compare_min) * ($normal_size / $compare_size);
+				if(isset($compare_size)&&($compare_size != 0)) {
+					$translation = $normal_min + ($compare_date - $compare_min) * ($normal_size / $compare_size);
+				} else {
+					$translation = 1;
+				}
+				}
 				$translated_array[$key][number_format($translation, 0, '', '')] = $value;
 			}
 		}
