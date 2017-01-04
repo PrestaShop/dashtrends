@@ -47,9 +47,9 @@ class dashtrends extends Module
         $this->allow_push = true;
 
         parent::__construct();
-        $this->displayName = $this->l('Dashboard Trends');
-        $this->description = $this->l('Adds a block with a graphical representation of the development of your store(s) based on selected key data.');
-        $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
+        $this->displayName = $this->trans('Dashboard Trends', array(), 'Modules.Dashtrends.Admin');
+        $this->description = $this->trans('Adds a block with a graphical representation of the development of your store(s) based on selected key data.', array(), 'Modules.Dashtrends.Admin');
+        $this->ps_versions_compliancy = array('min' => '1.7.0.0', 'max' => _PS_VERSION_);
     }
 
     public function install()
@@ -195,7 +195,7 @@ class dashtrends extends Module
             ),
             'conversion_rate_score_trends' => array(
                 'way' => ($data1['conversion_rate'] == $data2['conversion_rate'] ? 'right' : ($data1['conversion_rate'] > $data2['conversion_rate'] ? 'up' : 'down')),
-                'value' => ($data1['conversion_rate'] > $data2['conversion_rate'] ? '+' : '') . ($data2['conversion_rate'] ? sprintf($this->l('%s points'), round(100 * ($data1['conversion_rate'] - $data2['conversion_rate']), 2)) : '&infin;')
+                'value' => ($data1['conversion_rate'] > $data2['conversion_rate'] ? '+' : '') . ($data2['conversion_rate'] ? sprintf($this->trans('%s points', array(), 'Modules.Dashtrends.Admin'), round(100 * ($data1['conversion_rate'] - $data2['conversion_rate']), 2)) : '&infin;')
             ),
             'net_profits_score_trends' => array(
                 'way' => ($data1['net_profits'] == $data2['net_profits'] ? 'right' : ($data1['net_profits'] > $data2['net_profits'] ? 'up' : 'down')),
@@ -248,7 +248,7 @@ class dashtrends extends Module
 
     protected function addTaxSuffix()
     {
-        return ' <small>'.$this->l('tax excl.').'</small>';
+        return ' <small>'.$this->trans('Tax excl.', array(), 'Admin.Global').'</small>';
     }
 
     protected function translateCompareData($normal, $compare)
@@ -310,12 +310,12 @@ class dashtrends extends Module
         }
 
         $charts = array(
-            'sales' => $this->l('Sales'),
-            'orders' => $this->l('Orders'),
-            'average_cart_value' => $this->l('Average Cart Value'),
-            'visits' => $this->l('Visits'),
-            'conversion_rate' => $this->l('Conversion Rate'),
-            'net_profits' => $this->l('Net Profit')
+            'sales' => $this->trans('Sales', array(), 'Admin.Global'),
+            'orders' => $this->trans('Orders', array(), 'Admin.Global'),
+            'average_cart_value' => $this->trans('Average Cart Value', array(), 'Modules.Dashtrends.Admin'),
+            'visits' => $this->trans('Visits', array(), 'Admin.ShopParameters.Feature'),
+            'conversion_rate' => $this->trans('Conversion Rate', array(), 'Modules.Dashtrends.Admin'),
+            'net_profits' => $this->trans('Net Profit', array(), 'Modules.Dashtrends.Admin')
         );
 
         $gfx_color = array('#1777B6','#2CA121','#E61409','#FF7F00','#6B399C','#B3591F');
@@ -335,7 +335,7 @@ class dashtrends extends Module
                 $data['data'][] = array(
                     'id' => $key.'_compare',
                     'color' => $gfx_color_compare[$i],
-                    'key' => sprintf($this->l('%s (previous period)'), $title),
+                    'key' => sprintf($this->trans('%s (previous period)', array(), 'Modules.Dashtrends.Admin'), $title),
                     'values' => $chart_data_compare[$key],
                     'disabled' => ($key == 'sales' ? false : true)
                 );
