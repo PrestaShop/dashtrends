@@ -313,7 +313,7 @@ class dashtrends extends Module
             'sales' => $this->trans('Sales', array(), 'Admin.Global'),
             'orders' => $this->trans('Orders', array(), 'Admin.Global'),
             'average_cart_value' => $this->trans('Average Cart Value', array(), 'Modules.Dashtrends.Admin'),
-            'visits' => $this->trans('Visits', array(), 'Admin.ShopParameters.Feature'),
+            'visits' => $this->trans('Visits', array(), 'Admin.Shopparameters.Feature'),
             'conversion_rate' => $this->trans('Conversion Rate', array(), 'Modules.Dashtrends.Admin'),
             'net_profits' => $this->trans('Net Profit', array(), 'Modules.Dashtrends.Admin')
         );
