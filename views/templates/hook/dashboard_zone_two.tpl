@@ -33,22 +33,22 @@
 	<header class="panel-heading">
 		<i class="icon-bar-chart"></i> {l s='Dashboard' d='Modules.Dashtrends.Admin'}
 		<span class="panel-heading-action">
-			<a class="list-toolbar-btn" href="{$link->getAdminLink('AdminDashboard')|escape:'html':'UTF-8'}&amp;profitability_conf=1" title="{l s='Configure' d='Modules.Dashtrends.Admin'}">
+			<a class="list-toolbar-btn" href="{$link->getAdminLink('AdminDashboard')|escape:'html':'UTF-8'}&amp;profitability_conf=1" title="{l s='Configure' d='Admin.Actions'}">
 				<i class="process-icon-configure"></i>
 			</a>
-			<a class="list-toolbar-btn" href="#" onclick="refreshDashboard('dashtrends'); return false;" title="{l s='Refresh' d='Modules.Dashtrends.Admin'}">
+			<a class="list-toolbar-btn" href="#" onclick="refreshDashboard('dashtrends'); return false;" title="{l s='Refresh' d='Admin.Actions'}">
 				<i class="process-icon-refresh"></i>
 			</a>
 		</span>
 	</header>
 	<div id="dashtrends_toolbar" class="row">
 		<dl class="col-xs-4 col-lg-2 label-tooltip" onclick="selectDashtrendsChart(this, 'sales');" data-toggle="tooltip" data-original-title="{l s='Sum of revenue (excl. tax) generated within the date range by orders considered validated.' d='Modules.Dashtrends.Admin'}" data-placement="bottom">
-				<dt>{l s='Sales' d='Modules.Dashtrends.Admin'}</dt>
+				<dt>{l s='Sales' d='Admin.Global'}</dt>
 				<dd class="data_value size_l"><span id="sales_score"></span></dd>
 				<dd class="dash_trend"><span id="sales_score_trends"></span></dd>
 		</dl>
 		<dl class="col-xs-4 col-lg-2 label-tooltip" onclick="selectDashtrendsChart(this, 'orders');" data-toggle="tooltip" data-original-title="{l s='Total number of orders received within the date range that are considered validated.' d='Modules.Dashtrends.Admin'}" data-placement="bottom">
-				<dt>{l s='Orders' d='Modules.Dashtrends.Admin'}</dt>
+				<dt>{l s='Orders' d='Admin.Global'}</dt>
 				<dd class="data_value size_l"><span id="orders_score"></span></dd>
 				<dd class="dash_trend"><span id="orders_score_trends"></span></dd>
 		</dl>
@@ -58,12 +58,12 @@
 				<dd class="dash_trend"><span id="cart_value_score_trends"></span></dd>
 		</dl>
 		<dl class="col-xs-4 col-lg-2 label-tooltip" onclick="selectDashtrendsChart(this, 'visits');" data-toggle="tooltip" data-original-title="{l s='Total number of visits within the date range. A visit is the period of time a user is actively engaged with your website.' d='Modules.Dashtrends.Admin'}" data-placement="bottom">
-				<dt>{l s='Visits' d='Modules.Dashtrends.Admin'}</dt>
+				<dt>{l s='Visits' d='Admin.Global'}</dt>
 				<dd class="data_value size_l"><span id="visits_score"></span></dd>
 				<dd class="dash_trend"><span id="visits_score_trends"></span></dd>
 		</dl>
 		<dl class="col-xs-4 col-lg-2 label-tooltip" onclick="selectDashtrendsChart(this, 'conversion_rate');" data-toggle="tooltip" data-original-title="{l s='Ecommerce Conversion Rate is the percentage of visits that resulted in an validated order.' d='Modules.Dashtrends.Admin'}" data-placement="bottom">
-			<dt>{l s='Conversion Rate' d='Modules.Dashtrends.Admin'}</dt>
+			<dt>{l s='Conversion Rate' d='Admin.Global'}</dt>
 			<dd class="data_value size_l"><span id="conversion_rate_score"></span></dd>
 			<dd class="dash_trend"><span id="conversion_rate_score_trends"></span></dd>
 		</dl>
