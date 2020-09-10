@@ -74,11 +74,9 @@ function selectDashtrendsChart(element, type)
 	$('#dashtrends_toolbar dl').removeClass('active');
 	current_charts = new Array();
 	$.each(dashtrends_data, function(index, value) {
-		if (value.id == type || value.id == type + '_compare')
-		{
-			if (value.id == type)
-			{
-				$(element).siblings().css('background-color', 'none').removeClass('active');
+		if (value.id == type || value.id == type + '_compare') {
+			if (value.id == type) {
+				$(element).siblings().css('background-color', 'inherit').removeClass('active');
 				$(element).css('background-color', dashtrends_data[index].color).addClass('active');
 			}
 
@@ -105,5 +103,5 @@ function selectDashtrendsChart(element, type)
 }
 
 $(document).ready(function(){
-    $("dl").tooltip();
+    $('dl').tooltip();
 });
