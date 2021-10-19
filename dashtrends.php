@@ -234,13 +234,13 @@ class dashtrends extends Module
             $this->dashboard_data_compare = $this->translateCompareData($this->dashboard_data, $this->dashboard_data_compare);
         }
 
-        $sales_score = Tools::displayPrice($this->dashboard_data_sum['sales'], $this->currency) .
+        $sales_score = $this->context->getCurrentLocale()->formatPrice($this->dashboard_data_sum['sales'], $this->context->currency->iso_code) .
                        $this->addTaxSuffix();
 
-        $cart_value_score = Tools::displayPrice($this->dashboard_data_sum['average_cart_value'], $this->currency) .
+        $cart_value_score = $this->context->getCurrentLocale()->formatPrice($this->dashboard_data_sum['average_cart_value'], $this->context->currency->iso_code) .
                             $this->addTaxSuffix();
 
-        $net_profit_score = Tools::displayPrice($this->dashboard_data_sum['net_profits'], $this->currency) .
+        $net_profit_score = $this->context->getCurrentLocale()->formatPrice($this->dashboard_data_sum['net_profits'], $this->context->currency->iso_code) .
                             $this->addTaxSuffix();
 
         return [
