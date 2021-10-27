@@ -114,7 +114,7 @@ class dashtrends extends Module
         } else {
             $tmp_data['visits'] = AdminStatsController::getVisits(false, $date_from, $date_to, 'day');
             $tmp_data['orders'] = AdminStatsController::getOrders($date_from, $date_to, 'day');
-            $tmp_data['total_paid_tax_excl'] = AdminStatsController::getTotalSales($date_from, $date_to, 'day');
+            $tmp_data['total_paid_tax_excl'] = $this->getTotalSalesWithRefunds($date_from, $date_to, 'day');
             $tmp_data['total_purchases'] = AdminStatsController::getPurchases($date_from, $date_to, 'day');
             $tmp_data['total_expenses'] = AdminStatsController::getExpenses($date_from, $date_to, 'day');
         }
@@ -360,5 +360,88 @@ class dashtrends extends Module
     public function hookActionOrderStatusPostUpdate($params)
     {
         Tools::changeFileMTime($this->push_filename);
+    }
+
+    /**
+     * @param string $date_from
+     * @param string $date_to
+     * @param string|bool $granularity
+     *
+     * @return array|false|string
+     *
+     * @throws PrestaShopDatabaseException
+     */
+    protected function getTotalSalesWithRefunds($date_from, $date_to, $granularity = false)
+    {
+        $sales = AdminStatsController::getTotalSales($date_from, $date_to, $granularity);
+
+        $refunds = $this->getRefunds($date_from, $date_to, $granularity);
+        if (!$granularity) {
+            return $sales - $refunds;
+        }
+
+        foreach ($sales as $key => $value) {
+            if (!isset($refunds[$key])) {
+                continue;
+            }
+            $sales[$key] -= $refunds[$key];
+        }
+
+        return $sales;
+    }
+
+    /**
+     * @param string $date_from
+     * @param string $date_to
+     * @param string|bool $granularity
+     *
+     * @return array|false|string
+     *
+     * @throws PrestaShopDatabaseException
+     */
+    protected function getRefunds($date_from, $date_to, $granularity = false)
+    {
+        /* @phpstan-ignore-next-line */
+        $restriction = Shop::addSqlRestriction(false, 'o');
+        $sqlRefunds = 'SELECT'
+            . (($granularity == 'day' || $granularity == 'month') ? ' LEFT(o.invoice_date, ' . ($granularity == 'day' ? 10 : 7) . ') AS date,' : '')
+            . ' SUM((ps.total_products_tax_excl - ps.total_shipping_tax_excl) / ps.conversion_rate) AS orderSlips'
+            . ' FROM `' . _DB_PREFIX_ . 'orders` o'
+            . ' INNER JOIN `' . _DB_PREFIX_ . 'order_slip` ps ON o.id_order = ps.id_order'
+            . ' LEFT JOIN `' . _DB_PREFIX_ . 'order_state` os ON o.current_state = os.id_order_state'
+            . ' WHERE o.invoice_date BETWEEN "' . pSQL($date_from) . ' 00:00:00" AND "' . pSQL($date_to) . ' 23:59:59" AND os.logable = 1'
+            . $restriction
+            . (($granularity == 'day' || $granularity == 'month') ? 'GROUP BY LEFT(o.invoice_date, ' . ($granularity == 'day' ? 10 : 7) . ')' : '')
+        ;
+        $refunds = [];
+
+        if ($granularity == 'day') {
+            /* @phpstan-ignore-next-line */
+            $result = DB::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sqlRefunds);
+            foreach ($result as $row) {
+                if (!isset($refunds[strtotime($row['date'])])) {
+                    $refunds[strtotime($row['date'])] = 0;
+                }
+                $refunds[strtotime($row['date'])] += $row['orderSlips'];
+            }
+
+            return $refunds;
+        }
+
+        if ($granularity == 'month') {
+            /* @phpstan-ignore-next-line */
+            $result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sqlRefunds);
+            foreach ($result as $row) {
+                if (!isset($refunds[strtotime($row['date'] . '-01')])) {
+                    $refunds[strtotime($row['date'] . '-01')] = 0;
+                }
+                $refunds[strtotime($row['date'] . '-01')] += $row['orderSlips'];
+            }
+
+            return $refunds;
+        }
+
+        /* @phpstan-ignore-next-line */
+        return Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue($sqlRefunds);
     }
 }
