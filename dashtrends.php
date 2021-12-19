@@ -40,20 +40,12 @@ class dashtrends extends Module
      */
     public $currency;
 
-    /**
-     * @var string
-     */
-    public $push_filename;
-
     public function __construct()
     {
         $this->name = 'dashtrends';
         $this->tab = 'dashboard';
         $this->version = '2.0.3';
         $this->author = 'PrestaShop';
-
-        $this->push_filename = _PS_CACHE_DIR_ . 'push/trends';
-        $this->allow_push = true;
 
         parent::__construct();
         $this->displayName = $this->trans('Dashboard Trends', [], 'Modules.Dashtrends.Admin');
@@ -67,7 +59,6 @@ class dashtrends extends Module
             && $this->registerHook('dashboardZoneTwo')
             && $this->registerHook('dashboardData')
             && $this->registerHook('actionAdminControllerSetMedia')
-            && $this->registerHook('actionOrderStatusPostUpdate')
         ;
     }
 
@@ -355,10 +346,5 @@ class dashtrends extends Module
         }
 
         return $data;
-    }
-
-    public function hookActionOrderStatusPostUpdate($params)
-    {
-        Tools::changeFileMTime($this->push_filename);
     }
 }
