@@ -387,7 +387,6 @@ class dashtrends extends Module
      */
     protected function getRefunds($date_from, $date_to, $granularity = false)
     {
-        /* @phpstan-ignore-next-line */
         $restriction = Shop::addSqlRestriction(false, 'o');
         $sqlRefunds = 'SELECT'
             . (($granularity == 'day' || $granularity == 'month') ? ' LEFT(o.invoice_date, ' . ($granularity == 'day' ? 10 : 7) . ') AS date,' : '')
