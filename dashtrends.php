@@ -49,7 +49,7 @@ class dashtrends extends Module
 
         parent::__construct();
         $this->displayName = $this->trans('Dashboard Trends', [], 'Modules.Dashtrends.Admin');
-        $this->description = $this->trans('Enrich your dashboard, display a graphical representation of your store’s development.', [], 'Modules.Dashtrends.Admin');
+        $this->description = $this->trans('Enrich your dashboard: display a graphical representation of your store’s development.', [], 'Modules.Dashtrends.Admin');
         $this->ps_versions_compliancy = ['min' => '1.7.6.0', 'max' => _PS_VERSION_];
     }
 
