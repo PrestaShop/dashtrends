@@ -44,7 +44,7 @@ class dashtrends extends Module
     {
         $this->name = 'dashtrends';
         $this->tab = 'administration';
-        $this->version = '2.1.0';
+        $this->version = '2.1.1';
         $this->author = 'PrestaShop';
 
         parent::__construct();
