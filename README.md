@@ -12,9 +12,9 @@ PrestaShop: `1.7.6.0` or later
 
 If module is enabled, check that the chart will be visible in the main Dashboard page.
 
-Link to specs : https://docs.prestashop-project.org/functional-documentation/functional-documentation/ux-ui/back-office/improve/modules/dashboard-trends-dashtrends
+Link to specs: https://docs.prestashop-project.org/functional-documentation/functional-documentation/ux-ui/back-office/improve/modules/dashboard-trends-dashtrends
 
-Link to test scenario : https://build.prestashop-project.org/test-scenarios/scenarios/modules/dashtrends.html
+Link to test scenario: https://build.prestashop-project.org/test-scenarios/scenarios/modules/dashtrends.html
 
 ## Reporting issues
 
