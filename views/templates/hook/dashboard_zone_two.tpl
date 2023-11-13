@@ -26,6 +26,7 @@
 	var currency_format = {$currency->format|floatval};
 	var currency_sign = '{$currency->sign|@addcslashes:'\''}';
 	var currency_blank = {$currency->blank|intval};
+        var priceDisplayPrecision = 0;
 </script>
 <div class="clearfix"></div>
 <section id="dashtrends" class="panel widget">
