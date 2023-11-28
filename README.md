@@ -4,6 +4,18 @@
 
 Enrich your dashboard, display a graphical representation of your store’s development.
 
+## Compatibility
+
+PrestaShop: `1.7.6.0` or later
+
+## How to test
+
+If module is enabled, check that the chart will be visible in the main Dashboard page.
+
+Link to specs: https://docs.prestashop-project.org/functional-documentation/functional-documentation/ux-ui/back-office/improve/modules/dashboard-trends-dashtrends
+
+Link to test scenario: https://build.prestashop-project.org/test-scenarios/scenarios/modules/dashtrends.html
+
 ## Reporting issues
 
 You can report issues with this module in the main PrestaShop repository. [Click here to report an issue][report-issue]. 
