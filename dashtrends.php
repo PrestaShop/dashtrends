@@ -413,7 +413,6 @@ class dashtrends extends Module
         }
 
         if ($granularity == 'month') {
-            /* @phpstan-ignore-next-line */
             $result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sqlRefunds);
             foreach ($result as $row) {
                 if (!isset($refunds[strtotime($row['date'] . '-01')])) {
@@ -425,7 +424,6 @@ class dashtrends extends Module
             return $refunds;
         }
 
-        /* @phpstan-ignore-next-line */
         return Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue($sqlRefunds);
     }
 }
