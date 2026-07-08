@@ -6,7 +6,7 @@ Enrich your dashboard, display a graphical representation of your store’s deve
 
 ## Compatibility
 
-PrestaShop: `1.7.6.0` or later
+PrestaShop: `8.2.0` or later
 
 ## How to test
 
