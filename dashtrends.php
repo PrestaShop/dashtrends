@@ -23,8 +23,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  */
-use Twig\Environment;
-
 if (!defined('_PS_VERSION_')) {
     exit;
 }
@@ -100,7 +98,12 @@ class dashtrends extends Module
 
     private function render(string $template, array $params = []): string
     {
-        return $this->get('twig')->render('@Modules/dashtrends/views/templates/admin/' . $template, $params);
+        $twig = $this->getTwig();
+        if (null === $twig) {
+            return '';
+        }
+
+        return $twig->render('@Modules/dashtrends/views/templates/admin/' . $template, $params);
     }
 
     /**
