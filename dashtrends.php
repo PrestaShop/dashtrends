@@ -23,6 +23,8 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  */
+use Twig\Environment;
+
 if (!defined('_PS_VERSION_')) {
     exit;
 }
@@ -44,7 +46,7 @@ class dashtrends extends Module
     {
         $this->name = 'dashtrends';
         $this->tab = 'administration';
-        $this->version = '2.1.3';
+        $this->version = '2.2.0';
         $this->author = 'PrestaShop';
 
         parent::__construct();
@@ -59,6 +61,8 @@ class dashtrends extends Module
             && $this->registerHook('dashboardZoneTwo')
             && $this->registerHook('dashboardData')
             && $this->registerHook('actionAdminControllerSetMedia')
+            // Modern counterpart of dashboardZoneTwo, registered alongside it (#41971).
+            && $this->registerHook('displayAdminDashboardZoneTwo')
         ;
     }
 
@@ -76,6 +80,64 @@ class dashtrends extends Module
         ]);
 
         return $this->display(__FILE__, 'dashboard_zone_two.tpl');
+    }
+
+    /**
+     * Modern counterpart of hookDashboardZoneTwo() for the Symfony dashboard (#41971).
+     * No comparison-period overlay: the new hook isn't passed compare_from/compare_to.
+     */
+    public function hookDisplayAdminDashboardZoneTwo(array $params)
+    {
+        $tmp_data = $this->getData($params['date_from'], $params['date_to']);
+        $this->dashboard_data = $this->refineData($params['date_from'], $params['date_to'], $tmp_data);
+
+        return $this->render('zone_two.html.twig', [
+            'title' => $this->trans('Sales trend', [], 'Admin.Global'),
+            'chartId' => 'dashtrends-sales',
+            'chartConfig' => json_encode($this->getSalesChartConfig(), JSON_HEX_TAG | JSON_HEX_AMP),
+        ]);
+    }
+
+    private function render(string $template, array $params = []): string
+    {
+        $twig = $this->get('twig');
+        if (!$twig instanceof Environment) {
+            return '';
+        }
+
+        return $twig->render('@Modules/dashtrends/views/templates/admin/' . $template, $params);
+    }
+
+    /**
+     * Plain Chart.js config, no dataset color (auto-applied by the core psColors plugin).
+     */
+    private function getSalesChartConfig(): array
+    {
+        $labels = [];
+        $data = [];
+        foreach ($this->dashboard_data['sales'] as $timestamp => $value) {
+            $labels[] = Tools::displayDate(date('Y-m-d', (int) $timestamp));
+            $data[] = round((float) $value, 2);
+        }
+
+        return [
+            'type' => 'line',
+            'data' => [
+                'labels' => $labels,
+                'datasets' => [
+                    [
+                        'label' => $this->trans('Sales', [], 'Admin.Global'),
+                        'data' => $data,
+                        'fill' => true,
+                        'tension' => 0.3,
+                    ],
+                ],
+            ],
+            'options' => [
+                'plugins' => ['legend' => ['position' => 'bottom']],
+                'scales' => ['y' => ['beginAtZero' => true]],
+            ],
+        ];
     }
 
     protected function getData($date_from, $date_to)
