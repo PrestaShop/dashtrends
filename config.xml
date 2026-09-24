@@ -2,7 +2,7 @@
 <module>
 	<name>dashtrends</name>
 	<displayName><![CDATA[Dashboard Trends]]></displayName>
-	<version><![CDATA[2.2.0]]></version>
+	<version><![CDATA[3.0.0]]></version>
 	<description><![CDATA[Enrich your dashboard: display a graphical representation of your store&rsquo;s development.]]></description>
 	<author><![CDATA[PrestaShop]]></author>
 	<tab><![CDATA[administration]]></tab>
